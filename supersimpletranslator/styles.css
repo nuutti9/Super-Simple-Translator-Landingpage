@@ -409,7 +409,7 @@ summary:focus-visible {
 
 .phone-primary {
   right: 78px;
-  top: 72px;
+  top: 128px;
 }
 
 .phone-secondary {
@@ -874,7 +874,7 @@ summary:focus-visible {
   .phone-primary {
     right: 50%;
     transform: translateX(46%);
-    top: 56px;
+    top: 110px;
   }
 
   .phone-secondary {
@@ -961,7 +961,7 @@ summary:focus-visible {
     right: auto;
     left: 50%;
     transform: translateX(-50%);
-    top: 28px;
+    top: 88px;
   }
 
   .phone-secondary {
@@ -1066,7 +1066,7 @@ summary:focus-visible {
   }
 
   .phone-primary {
-    top: 18px;
+    top: 68px;
   }
 
   .iphone-device {
