@@ -210,6 +210,18 @@ a {
   letter-spacing: -0.055em;
 }
 
+.hero-content h1 {
+  font-size: clamp(3rem, 7.2vw, 5.4rem);
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+html[lang="fi"] .hero-content h1 {
+  font-size: clamp(2.8rem, 6.7vw, 5rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
 .hero-copy,
 .section-heading p,
 .about-copy,
@@ -433,6 +445,16 @@ a {
 
   .hero-content {
     text-align: left;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.7rem, 12vw, 4.2rem);
+    letter-spacing: -0.03em;
+  }
+
+  html[lang="fi"] .hero-content h1 {
+    font-size: clamp(2.4rem, 11vw, 3.8rem);
+    letter-spacing: -0.02em;
   }
 
   .hero-copy {
