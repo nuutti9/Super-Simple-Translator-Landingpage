@@ -249,7 +249,7 @@ summary:focus-visible {
 }
 
 .hero {
-  padding-top: 52px;
+  padding-top: 92px;
   padding-bottom: 60px;
 }
 
@@ -403,12 +403,12 @@ summary:focus-visible {
 
 .phone-primary {
   right: 78px;
-  top: 24px;
+  top: 72px;
 }
 
 .phone-secondary {
   left: 14px;
-  bottom: 86px;
+  bottom: 54px;
 }
 
 .floating-note {
@@ -876,11 +876,12 @@ summary:focus-visible {
   .phone-primary {
     right: 50%;
     transform: translateX(46%);
+    top: 56px;
   }
 
   .phone-secondary {
     left: 10%;
-    bottom: 110px;
+    bottom: 72px;
   }
 
   .floating-note {
@@ -918,7 +919,7 @@ summary:focus-visible {
   }
 
   .hero {
-    padding-top: 28px;
+    padding-top: 64px;
   }
 
   .hero-copy h1,
@@ -945,13 +946,13 @@ summary:focus-visible {
     right: auto;
     left: 50%;
     transform: translateX(-50%);
-    top: 0;
+    top: 28px;
   }
 
   .phone-secondary {
     left: 50%;
     transform: translateX(-50%) scale(0.92);
-    bottom: 110px;
+    bottom: 88px;
   }
 
   .floating-note {
@@ -1011,6 +1012,10 @@ summary:focus-visible {
     min-height: 760px;
   }
 
+  .phone-primary {
+    top: 18px;
+  }
+
   .iphone-device {
     width: min(100%, 292px);
   }
@@ -1051,7 +1056,7 @@ summary:focus-visible {
 
   .phone-secondary {
     transform: translateX(-50%) scale(0.84);
-    bottom: 90px;
+    bottom: 76px;
   }
 
   .floating-note {
