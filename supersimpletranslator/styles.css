@@ -206,6 +206,7 @@ summary:focus-visible {
 .nav-links a,
 .footer-links a {
   transition: color 180ms ease, opacity 180ms ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -1097,17 +1098,32 @@ summary:focus-visible {
   }
 
   .hero-visual {
-    min-height: 560px;
+    min-height: 420px;
+    margin-top: 8px;
+  }
+
+  .phone-stack {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .phone-stack::before {
-    top: 42px;
-    width: 300px;
-    height: 300px;
+    left: 50%;
+    right: auto;
+    top: 30px;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 260px;
   }
 
   .phone-primary {
+    position: relative;
+    left: auto;
+    right: auto;
     top: 0;
+    transform: none;
+    margin: 0 auto;
   }
 
   .hero-copy {
@@ -1123,7 +1139,7 @@ summary:focus-visible {
   }
 
   .screenshot-frame {
-    width: min(100%, 280px);
+    width: min(100%, 236px);
   }
 
   .screenshot-frame-compact {
