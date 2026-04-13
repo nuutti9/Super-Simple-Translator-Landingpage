@@ -417,15 +417,6 @@ summary:focus-visible {
   bottom: 54px;
 }
 
-.floating-note {
-  position: absolute;
-  right: 10px;
-  bottom: 20px;
-  max-width: 280px;
-  padding: 20px 22px;
-}
-
-.floating-note span,
 .mini-pill {
   display: inline-flex;
   align-items: center;
@@ -436,12 +427,6 @@ summary:focus-visible {
   color: #5576b8;
   font-size: 0.8rem;
   font-weight: 700;
-}
-
-.floating-note strong {
-  display: block;
-  margin-top: 12px;
-  line-height: 1.55;
 }
 
 .iphone-device {
@@ -897,10 +882,6 @@ summary:focus-visible {
     bottom: 72px;
   }
 
-  .floating-note {
-    right: 6%;
-  }
-
   .features-grid,
   .value-grid,
   .steps-grid,
@@ -987,10 +968,6 @@ summary:focus-visible {
     left: 50%;
     transform: translateX(-50%) scale(0.92);
     bottom: 88px;
-  }
-
-  .floating-note {
-    display: none;
   }
 
   .showcase-side-card {
@@ -1134,10 +1111,6 @@ summary:focus-visible {
   .phone-secondary {
     transform: translateX(-50%) scale(0.84);
     bottom: 76px;
-  }
-
-  .floating-note {
-    display: none;
   }
 
   .hero-copy,
