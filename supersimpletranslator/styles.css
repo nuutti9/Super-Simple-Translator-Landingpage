@@ -266,6 +266,10 @@ summary:focus-visible {
   align-items: start;
 }
 
+.hero-copy {
+  margin-top: -28px;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -960,6 +964,10 @@ summary:focus-visible {
     margin-top: 24px;
   }
 
+  .hero-copy {
+    margin-top: -18px;
+  }
+
   .phone-primary {
     right: auto;
     left: 50%;
@@ -1064,6 +1072,10 @@ summary:focus-visible {
 
   .phone-primary {
     top: 26px;
+  }
+
+  .hero-copy {
+    margin-top: -8px;
   }
 
   .iphone-device {
