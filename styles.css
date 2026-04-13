@@ -77,7 +77,7 @@ a {
 .team-brand-image img {
   display: block;
   width: auto;
-  height: 56px;
+  height: 42px;
 }
 
 .team-brand-mark {
@@ -423,7 +423,7 @@ html[lang="fi"] .hero-content h1 {
   }
 
   .team-brand-image img {
-    height: 40px;
+    height: 32px;
   }
 
   .team-nav {
