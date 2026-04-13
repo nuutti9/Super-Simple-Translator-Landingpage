@@ -255,7 +255,7 @@ summary:focus-visible {
 
 .hero {
   overflow: hidden;
-  padding-top: 64px;
+  padding-top: 44px;
   padding-bottom: 56px;
 }
 
@@ -935,7 +935,7 @@ summary:focus-visible {
   }
 
   .hero {
-    padding-top: 58px;
+    padding-top: 42px;
   }
 
   .hero-copy h1,
