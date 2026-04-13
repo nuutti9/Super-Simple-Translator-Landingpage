@@ -145,6 +145,16 @@ summary:focus-visible {
   color: var(--text);
 }
 
+.brand-text-single {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.02rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -153,6 +163,44 @@ summary:focus-visible {
   gap: 28px;
   color: var(--muted);
   font-size: 0.96rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-soft);
+}
+
+.language-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  min-width: 44px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.language-button:hover {
+  color: var(--text);
+}
+
+.language-button.is-active {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .nav-links a,
@@ -857,6 +905,10 @@ summary:focus-visible {
     padding: 14px 0;
   }
 
+  .nav-actions {
+    margin-left: auto;
+  }
+
   .nav-links {
     order: 3;
     flex-basis: 100%;
@@ -940,6 +992,15 @@ summary:focus-visible {
 
   .button {
     width: 100%;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .language-switcher {
+    flex-shrink: 0;
   }
 
   .hero-actions {

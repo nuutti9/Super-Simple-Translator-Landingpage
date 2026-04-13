@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="privacy">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Privacy Policy placeholder page for Super Simple Translator.">
-  <title>Privacy Policy | Super Simple Translator</title>
+  <meta name="description" content="Privacy Policy placeholder page for Super Simple Translator." data-i18n-attr="content" data-i18n="meta.description">
+  <title data-i18n="meta.title">Privacy Policy | Super Simple Translator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -24,45 +24,51 @@
           <span class="brand-mark brand-mark-image">
             <img src="assets/app-icon.png" alt="Super Simple Translator app icon">
           </span>
-          <span class="brand-text"><strong>Super Simple</strong><span>Translator</span></span>
+          <span class="brand-text-single" data-i18n="brand.full">Super Simple Translator</span>
         </a>
         <nav class="nav-links" aria-label="Legal">
-          <a href="index.html#features">Features</a>
-          <a href="privacy.html" aria-current="page">Privacy</a>
-          <a href="terms.html">Terms</a>
+          <a href="index.html#features" data-i18n="nav.features">Features</a>
+          <a href="privacy.html" aria-current="page" data-i18n="nav.privacy">Privacy</a>
+          <a href="terms.html" data-i18n="nav.terms">Terms</a>
         </nav>
+        <div class="nav-actions">
+          <div class="language-switcher" aria-label="Website language selector">
+            <button class="language-button is-active" type="button" data-lang-choice="en">EN</button>
+            <button class="language-button" type="button" data-lang-choice="fi">FI</button>
+          </div>
+        </div>
       </div>
     </header>
 
     <main class="section">
       <div class="container legal-card soft-card">
-        <div class="eyebrow">Privacy Policy</div>
-        <h1>Privacy Policy</h1>
-        <p>
+        <div class="eyebrow" data-i18n="privacy.eyebrow">Privacy Policy</div>
+        <h1 data-i18n="privacy.title">Privacy Policy</h1>
+        <p data-i18n="privacy.intro">
           This page is ready for your final Privacy Policy content. Replace the placeholder copy
           below with the legal text you want to publish for Super Simple Translator.
         </p>
 
         <section class="legal-section">
-          <h2>Overview</h2>
-          <p>
+          <h2 data-i18n="privacy.overviewTitle">Overview</h2>
+          <p data-i18n="privacy.overviewBody">
             Explain what information your app collects, how it is used, and how users can contact
             you with privacy questions.
           </p>
         </section>
 
         <section class="legal-section">
-          <h2>Information You Collect</h2>
-          <p>
+          <h2 data-i18n="privacy.collectTitle">Information You Collect</h2>
+          <p data-i18n="privacy.collectBody">
             Add details about account information, analytics, speech data handling, or any other
             app-specific data collection practices here.
           </p>
         </section>
 
         <section class="legal-section">
-          <h2>Contact</h2>
+          <h2 data-i18n="privacy.contactTitle">Contact</h2>
           <p>
-            For privacy questions, contact
+            <span data-i18n="privacy.contactLead">For privacy questions, contact</span>
             <a href="mailto:support@supersimpletranslate.com">support@supersimpletranslate.com</a>.
           </p>
         </section>
