@@ -255,7 +255,7 @@ summary:focus-visible {
 
 .hero {
   overflow: hidden;
-  padding-top: 92px;
+  padding-top: 132px;
   padding-bottom: 60px;
 }
 
@@ -410,7 +410,7 @@ summary:focus-visible {
 
 .phone-primary {
   right: 64px;
-  top: 164px;
+  top: 112px;
 }
 
 .mini-pill {
@@ -870,7 +870,7 @@ summary:focus-visible {
   .phone-primary {
     right: 50%;
     transform: translateX(50%);
-    top: 150px;
+    top: 102px;
   }
 
   .features-grid,
@@ -923,7 +923,7 @@ summary:focus-visible {
   }
 
   .hero {
-    padding-top: 64px;
+    padding-top: 104px;
   }
 
   .hero-copy h1,
@@ -952,7 +952,7 @@ summary:focus-visible {
     right: auto;
     left: 50%;
     transform: translateX(-50%);
-    top: 128px;
+    top: 92px;
   }
 
   .showcase-side-card {
@@ -1051,7 +1051,7 @@ summary:focus-visible {
   }
 
   .phone-primary {
-    top: 104px;
+    top: 72px;
   }
 
   .iphone-device {
