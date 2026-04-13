@@ -214,8 +214,8 @@ const translations = {
   },
   privacy: {
     en: {
-      "meta.title": "Privacy Policy | Super Simple Translate",
-      "meta.description": "Privacy Policy for Super Simple Translate.",
+      "meta.title": "Privacy Policy | Super Simple Translator",
+      "meta.description": "Privacy Policy for Super Simple Translator.",
       "brand.full": "Super Simple Translator",
       "nav.features": "Features",
       "nav.faq": "FAQ",
@@ -232,8 +232,8 @@ const translations = {
       "privacy.contactLead": "For privacy questions, contact"
     },
     fi: {
-      "meta.title": "Tietosuojakäytäntö | Super Simple Translate",
-      "meta.description": "Super Simple Translaten tietosuojakäytäntö.",
+      "meta.title": "Tietosuojakäytäntö | Super Simple Translator",
+      "meta.description": "Super Simple Translatorin tietosuojakäytäntö.",
       "brand.full": "Super Simple Translator",
       "nav.features": "Ominaisuudet",
       "nav.faq": "UKK",
@@ -252,8 +252,8 @@ const translations = {
   },
   terms: {
     en: {
-      "meta.title": "Terms of Service | Super Simple Translate",
-      "meta.description": "Terms of Service for Super Simple Translate.",
+      "meta.title": "Terms of Service | Super Simple Translator",
+      "meta.description": "Terms of Service for Super Simple Translator.",
       "brand.full": "Super Simple Translator",
       "nav.faq": "FAQ",
       "nav.privacy": "Privacy",
@@ -269,8 +269,8 @@ const translations = {
       "terms.contactLead": "For support questions, contact"
     },
     fi: {
-      "meta.title": "Käyttöehdot | Super Simple Translate",
-      "meta.description": "Super Simple Translaten käyttöehdot.",
+      "meta.title": "Käyttöehdot | Super Simple Translator",
+      "meta.description": "Super Simple Translatorin käyttöehdot.",
       "brand.full": "Super Simple Translator",
       "nav.faq": "UKK",
       "nav.privacy": "Tietosuoja",

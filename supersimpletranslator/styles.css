@@ -280,8 +280,9 @@ summary:focus-visible {
   margin: 18px 0 0;
   font-size: clamp(2.8rem, 5.8vw, 5.5rem);
   line-height: 0.96;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.038em;
   font-weight: 800;
+  text-wrap: balance;
 }
 
 .hero-subheadline,
@@ -686,6 +687,13 @@ summary:focus-visible {
   padding: 34px;
 }
 
+.showcase-side-card {
+  margin-left: -14px;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  padding-left: 40px;
+}
+
 .showcase-copy p {
   max-width: 440px;
 }
@@ -901,6 +909,10 @@ summary:focus-visible {
 }
 
 @media (max-width: 840px) {
+  .hero-grid {
+    align-items: start;
+  }
+
   .nav {
     flex-wrap: wrap;
     align-items: center;
@@ -942,6 +954,7 @@ summary:focus-visible {
   .trust-panel h2,
   .legal-card h1 {
     line-height: 1.02;
+    letter-spacing: -0.03em;
   }
 
   .hero-points,
@@ -955,6 +968,7 @@ summary:focus-visible {
 
   .hero-visual {
     min-height: 860px;
+    margin-top: 24px;
   }
 
   .phone-primary {
@@ -974,8 +988,15 @@ summary:focus-visible {
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    bottom: 20px;
-    max-width: min(88vw, 320px);
+    bottom: 6px;
+    max-width: min(90vw, 340px);
+  }
+
+  .showcase-side-card {
+    margin-left: 0;
+    border-top-left-radius: var(--radius-xl);
+    border-bottom-left-radius: var(--radius-xl);
+    padding-left: 28px;
   }
 
   .footer-grid {
@@ -1024,6 +1045,15 @@ summary:focus-visible {
 
   .brand-text-single {
     font-size: 0.92rem;
+  }
+
+  .hero-copy h1,
+  .section-heading h2,
+  .trust-panel h2,
+  .legal-card h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    letter-spacing: -0.022em;
+    text-wrap: pretty;
   }
 
   .nav-actions {
@@ -1108,6 +1138,7 @@ summary:focus-visible {
     position: absolute;
     bottom: 0;
     padding: 16px 18px;
+    max-width: min(92vw, 344px);
   }
 
   .hero-copy,
