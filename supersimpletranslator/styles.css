@@ -408,13 +408,8 @@ summary:focus-visible {
 }
 
 .phone-primary {
-  right: 78px;
-  top: 128px;
-}
-
-.phone-secondary {
-  left: 14px;
-  bottom: 54px;
+  right: 64px;
+  top: 120px;
 }
 
 .mini-pill {
@@ -873,13 +868,8 @@ summary:focus-visible {
 
   .phone-primary {
     right: 50%;
-    transform: translateX(46%);
+    transform: translateX(50%);
     top: 110px;
-  }
-
-  .phone-secondary {
-    left: 10%;
-    bottom: 72px;
   }
 
   .features-grid,
@@ -962,12 +952,6 @@ summary:focus-visible {
     left: 50%;
     transform: translateX(-50%);
     top: 88px;
-  }
-
-  .phone-secondary {
-    left: 50%;
-    transform: translateX(-50%) scale(0.92);
-    bottom: 88px;
   }
 
   .showcase-side-card {
@@ -1062,7 +1046,7 @@ summary:focus-visible {
   }
 
   .hero-visual {
-    min-height: 690px;
+    min-height: 620px;
   }
 
   .phone-primary {
@@ -1106,11 +1090,6 @@ summary:focus-visible {
   .record-button {
     width: 132px;
     height: 132px;
-  }
-
-  .phone-secondary {
-    transform: translateX(-50%) scale(0.84);
-    bottom: 76px;
   }
 
   .hero-copy,
