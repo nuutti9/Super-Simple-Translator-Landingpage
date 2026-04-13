@@ -1025,7 +1025,7 @@ summary:focus-visible {
 
 @media (max-width: 560px) {
   .container {
-    width: min(calc(100% - 20px), var(--container));
+    width: min(calc(100% - 24px), var(--container));
   }
 
   .site-header {
@@ -1033,7 +1033,7 @@ summary:focus-visible {
   }
 
   .section {
-    padding: 40px 0;
+    padding: 32px 0;
   }
 
   .hero-subheadline,
@@ -1050,15 +1050,17 @@ summary:focus-visible {
   }
 
   .nav {
-    gap: 12px;
+    gap: 10px;
+    min-height: 76px;
   }
 
   .brand {
     width: 100%;
+    gap: 12px;
   }
 
   .brand-text-single {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
   }
 
   .hero-copy h1,
@@ -1099,24 +1101,26 @@ summary:focus-visible {
   }
 
   .nav-links {
-    font-size: 0.9rem;
-    gap: 14px;
+    font-size: 0.88rem;
+    gap: 12px;
+    padding-bottom: 2px;
   }
 
   .hero-actions {
     flex-direction: column;
     gap: 12px;
-    margin-top: 26px;
+    margin-top: 22px;
   }
 
   .hero-subheadline {
-    margin-top: 18px;
+    margin-top: 16px;
     max-width: none;
+    line-height: 1.62;
   }
 
   .hero-visual {
-    min-height: 392px;
-    margin-top: 18px;
+    min-height: 336px;
+    margin-top: 4px;
   }
 
   .phone-stack {
@@ -1128,10 +1132,10 @@ summary:focus-visible {
   .phone-stack::before {
     left: 50%;
     right: auto;
-    top: 26px;
+    top: 16px;
     transform: translateX(-50%);
-    width: 246px;
-    height: 246px;
+    width: 220px;
+    height: 220px;
   }
 
   .phone-primary {
@@ -1144,7 +1148,7 @@ summary:focus-visible {
   }
 
   .hero-copy {
-    margin-top: -4px;
+    margin-top: 0;
   }
 
   .iphone-device {
@@ -1156,7 +1160,7 @@ summary:focus-visible {
   }
 
   .screenshot-frame {
-    width: min(100%, 248px);
+    width: min(100%, 224px);
   }
 
   .screenshot-frame-compact {
@@ -1165,7 +1169,7 @@ summary:focus-visible {
 
   .showcase-phone-grid {
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     padding-right: 0;
   }
 
@@ -1194,14 +1198,15 @@ summary:focus-visible {
   }
 
   .hero-points {
-    gap: 14px;
-    margin-top: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
   }
 
   .soft-card {
-    border-radius: 24px;
-    box-shadow: 0 16px 34px rgba(109, 128, 171, 0.12);
-    backdrop-filter: blur(14px);
+    border-radius: 22px;
+    box-shadow: 0 14px 28px rgba(109, 128, 171, 0.1);
+    backdrop-filter: blur(12px);
   }
 
   .stat-card,
@@ -1211,16 +1216,28 @@ summary:focus-visible {
   .showcase-card,
   .faq-item,
   .trust-panel {
-    padding: 24px 22px;
+    padding: 22px 20px;
   }
 
   .stat-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 249, 255, 0.82));
-    border-color: rgba(255, 255, 255, 0.96);
+    min-height: 122px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(246, 249, 255, 0.76));
+    border-color: rgba(255, 255, 255, 0.98);
   }
 
   .stat-card:nth-child(2) {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(243, 247, 255, 0.76));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 246, 255, 0.72));
+  }
+
+  .stat-card strong {
+    font-size: 0.96rem;
+    line-height: 1.2;
+  }
+
+  .stat-card span {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    line-height: 1.45;
   }
 
   .value-grid,
@@ -1228,14 +1245,14 @@ summary:focus-visible {
   .steps-grid,
   .showcase-grid,
   .faq-list {
-    gap: 16px;
+    gap: 14px;
   }
 
   .value-card,
   .step-card {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 255, 0.82));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 255, 0.8));
   }
 
   .value-card::before,
@@ -1258,27 +1275,50 @@ summary:focus-visible {
   }
 
   .feature-card {
-    padding: 22px 22px 20px;
-    background: rgba(255, 255, 255, 0.64);
-    border-radius: 22px;
+    padding: 18px 4px 0;
+    background: transparent;
+    border-radius: 0;
     box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.82);
+    border: 0;
+    border-top: 1px solid rgba(122, 142, 181, 0.18);
   }
 
   .feature-card h3 {
     font-size: 1rem;
+    line-height: 1.28;
   }
 
   .feature-card p {
     margin-top: 8px;
+    font-size: 0.96rem;
+    line-height: 1.58;
   }
 
   .feature-card:nth-child(odd) {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(247, 250, 255, 0.58));
+    background: transparent;
   }
 
   .feature-card:nth-child(even) {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(243, 247, 255, 0.5));
+    background: transparent;
+  }
+
+  .features-grid {
+    gap: 0;
+  }
+
+  .step-card {
+    padding-left: 76px;
+    min-height: 168px;
+  }
+
+  .step-number {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    font-size: 0.94rem;
   }
 
   .showcase-card {
@@ -1286,8 +1326,8 @@ summary:focus-visible {
   }
 
   .large-card {
-    padding: 24px 22px 26px;
-    gap: 20px;
+    padding: 22px 18px 24px;
+    gap: 18px;
   }
 
   .showcase-copy p {
@@ -1295,15 +1335,15 @@ summary:focus-visible {
   }
 
   .screenshot-offset {
-    margin-top: 34px;
+    margin-top: 26px;
   }
 
   .showcase-side-card {
-    padding-left: 22px;
+    padding-left: 20px;
   }
 
   .trust-panel {
-    padding: 28px 22px;
+    padding: 26px 20px;
   }
 
   .faq-item summary {
