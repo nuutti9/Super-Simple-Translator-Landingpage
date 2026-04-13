@@ -255,15 +255,15 @@ summary:focus-visible {
 
 .hero {
   overflow: hidden;
-  padding-top: 132px;
-  padding-bottom: 60px;
+  padding-top: 160px;
+  padding-bottom: 56px;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
   gap: 32px;
-  align-items: center;
+  align-items: start;
 }
 
 .eyebrow {
@@ -284,7 +284,7 @@ summary:focus-visible {
 .trust-panel h2,
 .legal-card h1 {
   margin: 18px 0 0;
-  font-size: clamp(2.8rem, 5.8vw, 5.5rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   line-height: 0.96;
   letter-spacing: -0.038em;
   font-weight: 800;
@@ -369,7 +369,7 @@ summary:focus-visible {
 
 .hero-visual {
   position: relative;
-  min-height: 720px;
+  min-height: 760px;
 }
 
 .phone-stack {
@@ -410,7 +410,7 @@ summary:focus-visible {
 
 .phone-primary {
   right: 64px;
-  top: 112px;
+  top: 76px;
 }
 
 .mini-pill {
@@ -870,7 +870,7 @@ summary:focus-visible {
   .phone-primary {
     right: 50%;
     transform: translateX(50%);
-    top: 102px;
+    top: 70px;
   }
 
   .features-grid,
@@ -923,7 +923,7 @@ summary:focus-visible {
   }
 
   .hero {
-    padding-top: 104px;
+    padding-top: 128px;
   }
 
   .hero-copy h1,
@@ -944,7 +944,7 @@ summary:focus-visible {
   }
 
   .hero-visual {
-    min-height: 860px;
+    min-height: 820px;
     margin-top: 24px;
   }
 
@@ -952,7 +952,7 @@ summary:focus-visible {
     right: auto;
     left: 50%;
     transform: translateX(-50%);
-    top: 92px;
+    top: 44px;
   }
 
   .showcase-side-card {
@@ -1047,11 +1047,11 @@ summary:focus-visible {
   }
 
   .hero-visual {
-    min-height: 620px;
+    min-height: 560px;
   }
 
   .phone-primary {
-    top: 72px;
+    top: 26px;
   }
 
   .iphone-device {
