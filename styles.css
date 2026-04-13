@@ -74,6 +74,12 @@ a {
   letter-spacing: -0.03em;
 }
 
+.team-brand-image img {
+  display: block;
+  width: auto;
+  height: 30px;
+}
+
 .team-brand-mark {
   width: 16px;
   height: 16px;
@@ -414,6 +420,10 @@ html[lang="fi"] .hero-content h1 {
   .topbar-inner {
     flex-wrap: wrap;
     padding: 12px 0;
+  }
+
+  .team-brand-image img {
+    height: 26px;
   }
 
   .team-nav {
