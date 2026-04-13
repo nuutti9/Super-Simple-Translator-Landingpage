@@ -6,8 +6,10 @@
   <meta
     name="description"
     content="NodalApps builds focused mobile products with calm, modern design. Explore Super Simple Translator and the apps we're creating next."
+    data-i18n-attr="content"
+    data-i18n="meta.description"
   >
-  <title>NodalApps</title>
+  <title data-i18n="meta.title">NodalApps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -30,28 +32,34 @@
         </a>
 
         <nav class="team-nav" aria-label="Primary">
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#projects" data-i18n="nav.projects">Projects</a>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
 
-        <a class="ghost-button" href="#contact">Get in touch</a>
+        <div class="topbar-actions">
+          <div class="language-switcher" aria-label="Website language selector">
+            <button class="language-button is-active" type="button" data-lang-choice="en">EN</button>
+            <button class="language-button" type="button" data-lang-choice="fi">FI</button>
+          </div>
+          <a class="ghost-button" href="#contact" data-i18n="cta.contactTop">Get in touch</a>
+        </div>
       </div>
     </header>
 
     <main id="top">
       <section class="hero-panel">
         <div class="container hero-content">
-          <p class="section-kicker">Focused mobile products</p>
-          <h1>Calm apps with sharp utility.</h1>
-          <p class="hero-copy">
+          <p class="section-kicker" data-i18n="hero.kicker">Focused mobile products</p>
+          <h1 data-i18n="hero.title">Calm apps with sharp utility.</h1>
+          <p class="hero-copy" data-i18n="hero.copy">
             NodalApps builds simple, polished products that feel clear from the first tap. We care
             about speed, atmosphere, and removing friction from everyday tools.
           </p>
 
           <div class="hero-actions">
-            <a class="primary-button" href="#projects">View projects</a>
-            <a class="secondary-button" href="#contact">Contact NodalApps</a>
+            <a class="primary-button" href="#projects" data-i18n="cta.viewProjects">View projects</a>
+            <a class="secondary-button" href="#contact" data-i18n="cta.contactHero">Contact NodalApps</a>
           </div>
         </div>
       </section>
@@ -59,9 +67,9 @@
       <section class="section section-projects" id="projects">
         <div class="container">
           <div class="section-heading">
-            <p class="section-kicker">Projects</p>
-            <h2>What we're building</h2>
-            <p>
+            <p class="section-kicker" data-i18n="projects.kicker">Projects</p>
+            <h2 data-i18n="projects.title">What we're building</h2>
+            <p data-i18n="projects.copy">
               A growing set of focused products, each designed around one clear job and a more
               thoughtful user experience.
             </p>
@@ -69,9 +77,9 @@
 
           <div class="project-grid">
             <article class="project-card project-featured">
-              <div class="project-badge">Live now</div>
+              <div class="project-badge" data-i18n="projects.card1Badge">Live now</div>
               <h3>Super Simple Translator</h3>
-              <p>
+              <p data-i18n="projects.card1Copy">
                 Real-time speech translation designed to feel effortless. Press one button, speak,
                 and keep the conversation moving.
               </p>
@@ -79,21 +87,23 @@
                 <span>iOS</span>
                 <span>Speech translation</span>
               </div>
-              <a class="inline-link" href="/supersimpletranslator/">Open project</a>
+              <a class="inline-link" href="/supersimpletranslator/" data-i18n="projects.card1Link">Open project</a>
             </article>
 
             <article class="project-card">
-              <div class="project-badge project-badge-muted">In progress</div>
+              <div class="project-badge project-badge-muted" data-i18n="projects.card2Badge">In progress</div>
               <h3>koululounaslaskuri.fi</h3>
-              <p>
-                Laske kouluruoan makrot nopeasti ja helposti yhdellä selkeällä työkalulla.
+              <p data-i18n="projects.card2Copy">
+                Calculate school meal macros quickly and easily with a simple tool made specifically
+                for Finnish schools.
               </p>
+              <a class="inline-link" href="https://koululounaslaskuri.fi" target="_blank" rel="noreferrer" data-i18n="projects.card2Link">Open project</a>
             </article>
 
             <article class="project-card">
-              <div class="project-badge project-badge-muted">In progress</div>
-              <h3>More projects coming soon</h3>
-              <p>
+              <div class="project-badge project-badge-muted" data-i18n="projects.card3Badge">In progress</div>
+              <h3 data-i18n="projects.card3Title">More projects coming soon</h3>
+              <p data-i18n="projects.card3Copy">
                 We're building more focused products around simple, useful everyday workflows.
               </p>
             </article>
@@ -104,10 +114,10 @@
       <section class="section section-about" id="about">
         <div class="container about-grid">
           <div>
-            <p class="section-kicker">About</p>
-            <h2>Small team, product-first mindset.</h2>
+            <p class="section-kicker" data-i18n="about.kicker">About</p>
+            <h2 data-i18n="about.title">Small team, product-first mindset.</h2>
           </div>
-          <p class="about-copy">
+          <p class="about-copy" data-i18n="about.copy">
             NodalApps focuses on products that are visually distinct, easy to understand, and
             useful in real life. We like sharp interfaces, strong visual identity, and experiences
             that stay out of the way once they're open.
@@ -118,8 +128,8 @@
       <section class="section section-contact" id="contact">
         <div class="container contact-card">
           <div>
-            <p class="section-kicker">Contact</p>
-            <h2>Let's talk products.</h2>
+            <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
+            <h2 data-i18n="contact.title">Let's talk products.</h2>
           </div>
           <div class="contact-links">
             <a href="mailto:support@nodalapps.com">support@nodalapps.com</a>

@@ -90,6 +90,39 @@ a {
   font-size: 0.95rem;
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.language-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  min-width: 42px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.language-button.is-active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+}
+
 .team-nav a {
   transition: color 180ms ease;
 }
@@ -386,6 +419,11 @@ a {
 
   .ghost-button {
     width: 100%;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   .hero-panel {
