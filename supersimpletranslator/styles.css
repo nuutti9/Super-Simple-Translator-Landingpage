@@ -746,6 +746,18 @@ summary:focus-visible {
   margin: 0;
 }
 
+.footer-home-link {
+  display: inline-flex;
+  margin-top: 18px;
+  color: var(--muted);
+  font-weight: 600;
+  transition: color 180ms ease;
+}
+
+.footer-home-link:hover {
+  color: var(--text);
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
