@@ -81,14 +81,21 @@ if (canvas) {
   let width = 0;
   let height = 0;
   let rafId = 0;
-  let mouse = { x: 0.5, y: 0.35 };
+  let mouse = { x: 0.5, y: 0.32 };
 
-  const nodes = Array.from({ length: 34 }, () => ({
+  const clusterNodes = Array.from({ length: 22 }, () => ({
+    x: 0.18 + (Math.random() * 0.64),
+    y: 0.06 + (Math.random() * 0.42),
+    vx: (Math.random() - 0.5) * 0.00022,
+    vy: (Math.random() - 0.5) * 0.00018,
+    size: Math.random() * 1.8 + 1.8,
+  }));
+
+  const ambientStars = Array.from({ length: 20 }, () => ({
     x: Math.random(),
-    y: Math.random(),
-    vx: (Math.random() - 0.5) * 0.00055,
-    vy: (Math.random() - 0.5) * 0.00055,
-    size: Math.random() * 2.2 + 1.6,
+    y: Math.random() * 0.72,
+    size: Math.random() * 1.5 + 1.1,
+    alpha: 0.2 + (Math.random() * 0.28),
   }));
 
   function resizeCanvas() {
@@ -101,60 +108,74 @@ if (canvas) {
     context.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
   }
 
-  function drawNetwork() {
+  function drawConstellation() {
     context.clearRect(0, 0, width, height);
 
-    for (let i = 0; i < nodes.length; i += 1) {
-      const a = nodes[i];
-
-      if (!prefersReducedMotion) {
-        a.x += a.vx;
-        a.y += a.vy;
-
-        if (a.x <= 0.05 || a.x >= 0.95) a.vx *= -1;
-        if (a.y <= 0.05 || a.y >= 0.95) a.vy *= -1;
-      }
-
-      const ax = a.x * width + (mouse.x - 0.5) * 34;
-      const ay = a.y * height + (mouse.y - 0.5) * 26;
-
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const b = nodes[j];
-        const bx = b.x * width + (mouse.x - 0.5) * 26;
-        const by = b.y * height + (mouse.y - 0.5) * 18;
-        const dx = ax - bx;
-        const dy = ay - by;
-        const distance = Math.sqrt((dx * dx) + (dy * dy));
-
-        if (distance < 160) {
-          const alpha = 1 - (distance / 160);
-          context.strokeStyle = `rgba(122, 222, 167, ${alpha * 0.18})`;
-          context.lineWidth = 1;
-          context.beginPath();
-          context.moveTo(ax, ay);
-          context.lineTo(bx, by);
-          context.stroke();
-        }
-      }
-
-      context.fillStyle = "rgba(164, 240, 196, 0.78)";
+    ambientStars.forEach((star) => {
+      context.fillStyle = `rgba(182, 236, 208, ${star.alpha})`;
       context.beginPath();
-      context.arc(ax, ay, a.size, 0, Math.PI * 2);
+      context.arc(star.x * width, star.y * height, star.size, 0, Math.PI * 2);
       context.fill();
-    }
+    });
+
+    const projected = clusterNodes.map((node) => {
+      if (!prefersReducedMotion) {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x <= 0.14 || node.x >= 0.86) node.vx *= -1;
+        if (node.y <= 0.04 || node.y >= 0.5) node.vy *= -1;
+      }
+
+      const mx = (mouse.x - 0.5) * 58;
+      const my = (mouse.y - 0.28) * 44;
+      const px = (node.x * width) + mx;
+      const py = (node.y * height) + my;
+      return { px, py, size: node.size };
+    });
+
+    projected.forEach((point, index) => {
+      const distances = projected
+        .map((other, otherIndex) => ({
+          other,
+          otherIndex,
+          distance: Math.hypot(point.px - other.px, point.py - other.py),
+        }))
+        .filter((entry) => entry.otherIndex !== index && entry.distance < 240)
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, 3);
+
+      distances.forEach(({ other, distance, otherIndex }) => {
+        if (otherIndex < index) return;
+        const alpha = Math.max(0, 1 - (distance / 240)) * 0.12;
+        context.strokeStyle = `rgba(152, 221, 187, ${alpha})`;
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(point.px, point.py);
+        context.lineTo(other.px, other.py);
+        context.stroke();
+      });
+    });
+
+    projected.forEach((point) => {
+      context.fillStyle = "rgba(160, 231, 198, 0.7)";
+      context.beginPath();
+      context.arc(point.px, point.py, point.size, 0, Math.PI * 2);
+      context.fill();
+    });
 
     if (!prefersReducedMotion) {
-      rafId = window.requestAnimationFrame(drawNetwork);
+      rafId = window.requestAnimationFrame(drawConstellation);
     }
   }
 
   resizeCanvas();
-  drawNetwork();
+  drawConstellation();
 
   window.addEventListener("resize", () => {
     resizeCanvas();
     if (prefersReducedMotion) {
-      drawNetwork();
+      drawConstellation();
     }
   });
 
@@ -166,7 +187,7 @@ if (canvas) {
 
     if (prefersReducedMotion) {
       window.cancelAnimationFrame(rafId);
-      rafId = window.requestAnimationFrame(drawNetwork);
+      rafId = window.requestAnimationFrame(drawConstellation);
     }
   }, { passive: true });
 }
