@@ -22,6 +22,7 @@
 </head>
 <body class="team-page">
   <div class="site-shell">
+    <canvas class="node-canvas" id="node-canvas" aria-hidden="true"></canvas>
     <div class="orb orb-one"></div>
     <div class="orb orb-two"></div>
     <div class="orb orb-three"></div>
@@ -39,10 +40,6 @@
         </nav>
 
         <div class="topbar-actions">
-          <div class="language-switcher" aria-label="Website language selector">
-            <button class="language-button is-active" type="button" data-lang-choice="en">EN</button>
-            <button class="language-button" type="button" data-lang-choice="fi">FI</button>
-          </div>
           <a class="ghost-button" href="#contact" data-i18n="cta.contactTop">Get in touch</a>
         </div>
       </div>
@@ -50,7 +47,7 @@
 
     <main id="top">
       <section class="hero-panel">
-        <div class="container hero-content">
+        <div class="container hero-content reveal" data-parallax="12">
           <p class="section-kicker" data-i18n="hero.kicker">Simple mobile products</p>
           <h1 data-i18n="hero.title">Simple apps that are easy to use.</h1>
           <p class="hero-copy" data-i18n="hero.copy">
@@ -58,15 +55,15 @@
           </p>
 
           <div class="hero-actions">
-            <a class="primary-button" href="#projects" data-i18n="cta.viewProjects">View projects</a>
-            <a class="secondary-button" href="#contact" data-i18n="cta.contactHero">Contact NodalApps</a>
+            <a class="primary-button interactive-lift" href="#projects" data-i18n="cta.viewProjects">View projects</a>
+            <a class="secondary-button interactive-lift" href="#contact" data-i18n="cta.contactHero">Contact NodalApps</a>
           </div>
         </div>
       </section>
 
       <section class="section section-projects" id="projects">
         <div class="container">
-          <div class="section-heading">
+          <div class="section-heading reveal">
             <p class="section-kicker" data-i18n="projects.kicker">Projects</p>
             <h2 data-i18n="projects.title">Our projects</h2>
             <p data-i18n="projects.copy">
@@ -75,7 +72,7 @@
           </div>
 
           <div class="project-grid">
-            <article class="project-card project-featured">
+            <article class="project-card project-featured reveal interactive-card" data-parallax="8">
               <div class="project-badge" data-i18n="projects.card1Badge">Live now</div>
               <h3>Super Simple Translator</h3>
               <p data-i18n="projects.card1Copy">
@@ -85,10 +82,10 @@
                 <span>iOS</span>
                 <span>Speech translation</span>
               </div>
-              <a class="inline-link" href="/supersimpletranslator/" data-i18n="projects.card1Link">Open project</a>
+              <a class="inline-link" href="/supersimpletranslator/" target="_blank" rel="noreferrer" data-i18n="projects.card1Link">Open project</a>
             </article>
 
-            <article class="project-card">
+            <article class="project-card reveal interactive-card" data-parallax="10">
               <div class="project-badge" data-i18n="projects.card2Badge">Live now</div>
               <h3>koululounaslaskuri.fi</h3>
               <p data-i18n="projects.card2Copy">
@@ -97,7 +94,7 @@
               <a class="inline-link" href="https://koululounaslaskuri.fi" target="_blank" rel="noreferrer" data-i18n="projects.card2Link">Open project</a>
             </article>
 
-            <article class="project-card">
+            <article class="project-card reveal interactive-card" data-parallax="6">
               <div class="project-badge project-badge-muted" data-i18n="projects.card3Badge">In progress</div>
               <h3 data-i18n="projects.card3Title">More projects coming</h3>
               <p data-i18n="projects.card3Copy">
@@ -109,8 +106,8 @@
       </section>
 
       <section class="section section-about" id="about">
-        <div class="container about-grid">
-          <div>
+        <div class="container about-grid reveal">
+          <div data-parallax="6">
             <p class="section-kicker" data-i18n="about.kicker">About</p>
             <h2 data-i18n="about.title">Small team. Simple products.</h2>
           </div>
@@ -121,7 +118,7 @@
       </section>
 
       <section class="section section-contact" id="contact">
-        <div class="container contact-card">
+        <div class="container contact-card reveal interactive-card" data-parallax="7">
           <div>
             <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
             <h2 data-i18n="contact.title">Let's talk.</h2>

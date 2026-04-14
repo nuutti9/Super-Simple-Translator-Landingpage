@@ -1,4 +1,8 @@
 const navLinks = document.querySelectorAll('.team-nav a[href^="#"]');
+const revealItems = document.querySelectorAll(".reveal");
+const parallaxItems = document.querySelectorAll("[data-parallax]");
+const interactiveCards = document.querySelectorAll(".interactive-card, .interactive-lift");
+const canvas = document.getElementById("node-canvas");
 
 navLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
@@ -12,114 +16,157 @@ navLinks.forEach((link) => {
   });
 });
 
-const defaultLanguage = "en";
-const languageButtons = document.querySelectorAll("[data-lang-choice]");
-const localizedElements = document.querySelectorAll("[data-i18n]");
-const localizedAttributes = document.querySelectorAll("[data-i18n-attr]");
-
-const translations = {
-  en: {
-    "meta.title": "NodalApps",
-    "meta.description": "NodalApps makes simple mobile apps. See Super Simple Translator and the other products we are building.",
-    "nav.projects": "Projects",
-    "nav.about": "About",
-    "nav.contact": "Contact",
-    "cta.contactTop": "Get in touch",
-    "hero.kicker": "Simple mobile products",
-    "hero.title": "Simple apps that are easy to use.",
-    "hero.copy": "We build apps that are clear, useful, and easy to use.",
-    "cta.viewProjects": "View projects",
-    "cta.contactHero": "Contact NodalApps",
-    "projects.kicker": "Projects",
-    "projects.title": "Our projects",
-    "projects.copy": "These are the products we have live now and the ones we are still building.",
-    "projects.card1Badge": "Live now",
-    "projects.card1Copy": "A simple app for fast speech translation. Press one button, speak, and continue the conversation.",
-    "projects.card1Link": "Open project",
-    "projects.card2Badge": "Live now",
-    "projects.card2Copy": "Calculate school meal macros quickly and easily. Made especially for Finnish schools.",
-    "projects.card2Link": "Open project",
-    "projects.card3Badge": "In progress",
-    "projects.card3Title": "More projects coming",
-    "projects.card3Copy": "We are working on more simple products for everyday use.",
-    "about.kicker": "About",
-    "about.title": "Small team. Simple products.",
-    "about.copy": "We make products that are easy to understand and easy to use.",
-    "contact.kicker": "Contact",
-    "contact.title": "Let's talk."
-  },
-  fi: {
-    "meta.title": "NodalApps",
-    "meta.description": "NodalApps tekee yksinkertaisia mobiilisovelluksia. Katso Super Simple Translator ja muut tuotteet, joita rakennamme.",
-    "nav.projects": "Projektit",
-    "nav.about": "Tietoa",
-    "nav.contact": "Yhteys",
-    "cta.contactTop": "Ota yhteyttä",
-    "hero.kicker": "Yksinkertaisia mobiilisovelluksia",
-    "hero.title": "Yksinkertaisia appeja, joita on helppo käyttää.",
-    "hero.copy": "Teemme appeja, jotka ovat selkeitä, hyödyllisiä ja helppoja käyttää.",
-    "cta.viewProjects": "Katso projektit",
-    "cta.contactHero": "Ota yhteyttä",
-    "projects.kicker": "Projektit",
-    "projects.title": "Projektimme",
-    "projects.copy": "Tässä ovat tuotteet, jotka ovat jo livenä, ja ne joita rakennamme parhaillaan.",
-    "projects.card1Badge": "Live nyt",
-    "projects.card1Copy": "Yksinkertainen sovellus nopeaan puhekäännökseen. Paina yhtä nappia, puhu ja jatka keskustelua.",
-    "projects.card1Link": "Avaa projekti",
-    "projects.card2Badge": "Live nyt",
-    "projects.card2Copy": "Laske kouluruoan makrot nopeasti ja helposti. Tehty erityisesti suomalaisille kouluille.",
-    "projects.card2Link": "Avaa projekti",
-    "projects.card3Badge": "Työn alla",
-    "projects.card3Title": "Lisää projekteja tulossa",
-    "projects.card3Copy": "Rakennamme lisää yksinkertaisia tuotteita arjen käyttöön.",
-    "about.kicker": "Tietoa",
-    "about.title": "Pieni tiimi. Yksinkertaiset tuotteet.",
-    "about.copy": "Teemme tuotteita, jotka ovat helppoja ymmärtää ja helppoja käyttää.",
-    "contact.kicker": "Yhteys",
-    "contact.title": "Ota yhteyttä."
-  }
-};
-
-function getStoredLanguage() {
-  const stored = window.localStorage.getItem("nodalappsLanguage");
-  return stored === "fi" || stored === "en" ? stored : defaultLanguage;
-}
-
-function setActiveLanguageButton(language) {
-  languageButtons.forEach((button) => {
-    const isActive = button.dataset.langChoice === language;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-}
-
-function applyLanguage(language) {
-  const map = translations[language] || translations[defaultLanguage];
-  document.documentElement.lang = language;
-
-  localizedElements.forEach((element) => {
-    const key = element.dataset.i18n;
-    if (map[key]) {
-      element.textContent = map[key];
-    }
+if ("IntersectionObserver" in window && revealItems.length > 0) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.16,
+    rootMargin: "0px 0px -40px 0px",
   });
 
-  localizedAttributes.forEach((element) => {
-    const key = element.dataset.i18n;
-    const attr = element.dataset.i18nAttr;
-    if (map[key] && attr) {
-      element.setAttribute(attr, map[key]);
-    }
+  revealItems.forEach((item, index) => {
+    item.style.transitionDelay = `${Math.min(index * 50, 220)}ms`;
+    revealObserver.observe(item);
   });
-
-  setActiveLanguageButton(language);
-  window.localStorage.setItem("nodalappsLanguage", language);
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-languageButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    applyLanguage(button.dataset.langChoice || defaultLanguage);
+function applyInteractiveTilt(element, event, strength = 10) {
+  const rect = element.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const rotateY = ((x / rect.width) - 0.5) * strength;
+  const rotateX = (0.5 - (y / rect.height)) * strength;
+  element.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+}
+
+interactiveCards.forEach((card) => {
+  card.addEventListener("mousemove", (event) => applyInteractiveTilt(card, event, 8));
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
   });
 });
 
-applyLanguage(getStoredLanguage());
+let pointerX = window.innerWidth / 2;
+let pointerY = window.innerHeight / 2;
+let parallaxTicking = false;
+
+function renderParallax() {
+  parallaxItems.forEach((item) => {
+    const strength = Number(item.dataset.parallax || 8);
+    const x = ((pointerX / window.innerWidth) - 0.5) * strength;
+    const y = ((pointerY / window.innerHeight) - 0.5) * strength;
+    item.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  });
+  parallaxTicking = false;
+}
+
+window.addEventListener("mousemove", (event) => {
+  pointerX = event.clientX;
+  pointerY = event.clientY;
+  if (!parallaxTicking) {
+    window.requestAnimationFrame(renderParallax);
+    parallaxTicking = true;
+  }
+}, { passive: true });
+
+if (canvas) {
+  const context = canvas.getContext("2d");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let width = 0;
+  let height = 0;
+  let rafId = 0;
+  let mouse = { x: 0.5, y: 0.35 };
+
+  const nodes = Array.from({ length: 34 }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    vx: (Math.random() - 0.5) * 0.00055,
+    vy: (Math.random() - 0.5) * 0.00055,
+    size: Math.random() * 2.2 + 1.6,
+  }));
+
+  function resizeCanvas() {
+    const shell = canvas.parentElement;
+    if (!shell) return;
+    width = shell.clientWidth;
+    height = shell.clientHeight;
+    canvas.width = Math.max(1, Math.floor(width * window.devicePixelRatio));
+    canvas.height = Math.max(1, Math.floor(height * window.devicePixelRatio));
+    context.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+  }
+
+  function drawNetwork() {
+    context.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      const a = nodes[i];
+
+      if (!prefersReducedMotion) {
+        a.x += a.vx;
+        a.y += a.vy;
+
+        if (a.x <= 0.05 || a.x >= 0.95) a.vx *= -1;
+        if (a.y <= 0.05 || a.y >= 0.95) a.vy *= -1;
+      }
+
+      const ax = a.x * width + (mouse.x - 0.5) * 34;
+      const ay = a.y * height + (mouse.y - 0.5) * 26;
+
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const b = nodes[j];
+        const bx = b.x * width + (mouse.x - 0.5) * 26;
+        const by = b.y * height + (mouse.y - 0.5) * 18;
+        const dx = ax - bx;
+        const dy = ay - by;
+        const distance = Math.sqrt((dx * dx) + (dy * dy));
+
+        if (distance < 160) {
+          const alpha = 1 - (distance / 160);
+          context.strokeStyle = `rgba(122, 222, 167, ${alpha * 0.18})`;
+          context.lineWidth = 1;
+          context.beginPath();
+          context.moveTo(ax, ay);
+          context.lineTo(bx, by);
+          context.stroke();
+        }
+      }
+
+      context.fillStyle = "rgba(164, 240, 196, 0.78)";
+      context.beginPath();
+      context.arc(ax, ay, a.size, 0, Math.PI * 2);
+      context.fill();
+    }
+
+    if (!prefersReducedMotion) {
+      rafId = window.requestAnimationFrame(drawNetwork);
+    }
+  }
+
+  resizeCanvas();
+  drawNetwork();
+
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    if (prefersReducedMotion) {
+      drawNetwork();
+    }
+  });
+
+  window.addEventListener("mousemove", (event) => {
+    mouse = {
+      x: event.clientX / window.innerWidth,
+      y: event.clientY / window.innerHeight,
+    };
+
+    if (prefersReducedMotion) {
+      window.cancelAnimationFrame(rafId);
+      rafId = window.requestAnimationFrame(drawNetwork);
+    }
+  }, { passive: true });
+}

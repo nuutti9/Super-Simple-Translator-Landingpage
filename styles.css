@@ -42,11 +42,24 @@ a {
   position: relative;
   overflow: hidden;
   min-height: 100vh;
+  isolation: isolate;
+}
+
+.node-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 0;
 }
 
 .container {
   width: min(calc(100% - 32px), var(--container));
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .topbar {
@@ -148,6 +161,17 @@ a {
   border-radius: 999px;
   font-weight: 700;
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.interactive-lift,
+.interactive-card {
+  transform-style: preserve-3d;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+  will-change: transform;
 }
 
 .ghost-button {
@@ -280,6 +304,21 @@ html[lang="fi"] .hero-content h1 {
   min-height: 320px;
   padding: 28px;
   border-radius: 30px;
+  overflow: hidden;
+}
+
+.project-card::after,
+.contact-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -45% auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(121, 224, 172, 0.16), transparent 68%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
 }
 
 .project-featured {
@@ -287,6 +326,15 @@ html[lang="fi"] .hero-content h1 {
     radial-gradient(circle at top right, rgba(111, 213, 164, 0.14), transparent 30%),
     radial-gradient(circle at bottom left, rgba(47, 127, 91, 0.16), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.05));
+}
+
+.interactive-card:hover {
+  box-shadow: 0 38px 92px rgba(0, 0, 0, 0.52);
+  border-color: rgba(137, 221, 178, 0.18);
+}
+
+.interactive-card:hover::after {
+  opacity: 1;
 }
 
 .project-badge {
@@ -360,6 +408,17 @@ html[lang="fi"] .hero-content h1 {
 
 .contact-links a {
   color: #e4f4eb;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .orb {
@@ -519,6 +578,10 @@ html[lang="fi"] .hero-content h1 {
   .contact-card {
     padding: 24px;
   }
+
+  .node-canvas {
+    opacity: 0.42;
+  }
 }
 
 @media (max-width: 560px) {
@@ -555,5 +618,9 @@ html[lang="fi"] .hero-content h1 {
     min-height: 36px;
     padding: 0 12px;
     font-size: 0.86rem;
+  }
+
+  .node-canvas {
+    opacity: 0.26;
   }
 }
