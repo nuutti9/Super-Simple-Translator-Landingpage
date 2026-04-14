@@ -84,12 +84,19 @@ if (canvas) {
   let pointer = { x: 0.5, y: 0.28 };
   let smoothPointer = { x: 0.5, y: 0.28 };
 
-  const stars = Array.from({ length: Math.max(28, Math.floor(window.innerWidth / 68)) }, () => ({
+  const clusterNodes = Array.from({ length: 44 }, () => ({
+    x: 0.22 + (Math.random() * 0.56),
+    y: 0.04 + (Math.random() * 0.34),
+    vx: (Math.random() - 0.5) * 0.00012,
+    vy: (Math.random() - 0.5) * 0.0001,
+    radius: 1.1 + (Math.random() * 1.4),
+  }));
+
+  const ambientStars = Array.from({ length: 12 }, () => ({
     x: Math.random(),
     y: Math.random(),
-    vx: (Math.random() - 0.5) * 0.00018,
-    vy: (Math.random() - 0.5) * 0.00016,
-    radius: 1.1 + (Math.random() * 1.8),
+    radius: 1 + (Math.random() * 1.2),
+    alpha: 0.14 + (Math.random() * 0.18),
   }));
 
   function resizeCanvas() {
@@ -108,21 +115,28 @@ if (canvas) {
     smoothPointer.x += (pointer.x - smoothPointer.x) * 0.06;
     smoothPointer.y += (pointer.y - smoothPointer.y) * 0.06;
 
-    const positionX = (smoothPointer.x - 0.5) * 42;
-    const positionY = (smoothPointer.y - 0.5) * 30;
+    ambientStars.forEach((star) => {
+      context.fillStyle = `rgba(171, 224, 199, ${star.alpha})`;
+      context.beginPath();
+      context.arc(star.x * width, star.y * height, star.radius, 0, Math.PI * 2);
+      context.fill();
+    });
+
+    const mousePushX = (smoothPointer.x - 0.5) * 86;
+    const mousePushY = (smoothPointer.y - 0.3) * 54;
     const starPositions = [];
 
-    stars.forEach((star) => {
+    clusterNodes.forEach((star) => {
       if (!prefersReducedMotion) {
         star.x += star.vx;
         star.y += star.vy;
 
-        if (star.x <= 0 || star.x >= 1) star.vx *= -1;
-        if (star.y <= 0 || star.y >= 1) star.vy *= -1;
+        if (star.x <= 0.16 || star.x >= 0.84) star.vx *= -1;
+        if (star.y <= 0.03 || star.y >= 0.42) star.vy *= -1;
       }
 
-      const x = (star.x * width) + positionX;
-      const y = (star.y * height) + positionY;
+      const x = (star.x * width) + mousePushX;
+      const y = (star.y * height) + mousePushY;
       starPositions.push({ x, y, radius: star.radius });
     });
 
@@ -135,10 +149,10 @@ if (canvas) {
         const dy = a.y - b.y;
         const distance = Math.sqrt((dx * dx) + (dy * dy));
 
-        if (distance > 0 && distance < 170) {
-          const alpha = (1 - (distance / 170)) * 0.12;
+        if (distance > 0 && distance < 150) {
+          const alpha = (1 - (distance / 150)) * 0.2;
           context.strokeStyle = `rgba(181, 225, 205, ${alpha})`;
-          context.lineWidth = 0.7;
+          context.lineWidth = 0.8;
           context.beginPath();
           context.moveTo(a.x, a.y);
           context.lineTo(b.x, b.y);
@@ -148,7 +162,7 @@ if (canvas) {
     }
 
     starPositions.forEach((star) => {
-      context.fillStyle = "rgba(171, 224, 199, 0.72)";
+      context.fillStyle = "rgba(171, 224, 199, 0.82)";
       context.beginPath();
       context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
       context.fill();
