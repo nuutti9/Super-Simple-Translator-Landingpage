@@ -81,21 +81,15 @@ if (canvas) {
   let width = 0;
   let height = 0;
   let rafId = 0;
-  let mouse = { x: 0.5, y: 0.32 };
+  let pointer = { x: 0.5, y: 0.28 };
+  let smoothPointer = { x: 0.5, y: 0.28 };
 
-  const clusterNodes = Array.from({ length: 22 }, () => ({
-    x: 0.18 + (Math.random() * 0.64),
-    y: 0.06 + (Math.random() * 0.42),
-    vx: (Math.random() - 0.5) * 0.00022,
-    vy: (Math.random() - 0.5) * 0.00018,
-    size: Math.random() * 1.8 + 1.8,
-  }));
-
-  const ambientStars = Array.from({ length: 20 }, () => ({
+  const stars = Array.from({ length: Math.max(28, Math.floor(window.innerWidth / 68)) }, () => ({
     x: Math.random(),
-    y: Math.random() * 0.72,
-    size: Math.random() * 1.5 + 1.1,
-    alpha: 0.2 + (Math.random() * 0.28),
+    y: Math.random(),
+    vx: (Math.random() - 0.5) * 0.00018,
+    vy: (Math.random() - 0.5) * 0.00016,
+    radius: 1.1 + (Math.random() * 1.8),
   }));
 
   function resizeCanvas() {
@@ -111,56 +105,52 @@ if (canvas) {
   function drawConstellation() {
     context.clearRect(0, 0, width, height);
 
-    ambientStars.forEach((star) => {
-      context.fillStyle = `rgba(182, 236, 208, ${star.alpha})`;
-      context.beginPath();
-      context.arc(star.x * width, star.y * height, star.size, 0, Math.PI * 2);
-      context.fill();
-    });
+    smoothPointer.x += (pointer.x - smoothPointer.x) * 0.06;
+    smoothPointer.y += (pointer.y - smoothPointer.y) * 0.06;
 
-    const projected = clusterNodes.map((node) => {
+    const positionX = (smoothPointer.x - 0.5) * 42;
+    const positionY = (smoothPointer.y - 0.5) * 30;
+    const starPositions = [];
+
+    stars.forEach((star) => {
       if (!prefersReducedMotion) {
-        node.x += node.vx;
-        node.y += node.vy;
+        star.x += star.vx;
+        star.y += star.vy;
 
-        if (node.x <= 0.14 || node.x >= 0.86) node.vx *= -1;
-        if (node.y <= 0.04 || node.y >= 0.5) node.vy *= -1;
+        if (star.x <= 0 || star.x >= 1) star.vx *= -1;
+        if (star.y <= 0 || star.y >= 1) star.vy *= -1;
       }
 
-      const mx = (mouse.x - 0.5) * 58;
-      const my = (mouse.y - 0.28) * 44;
-      const px = (node.x * width) + mx;
-      const py = (node.y * height) + my;
-      return { px, py, size: node.size };
+      const x = (star.x * width) + positionX;
+      const y = (star.y * height) + positionY;
+      starPositions.push({ x, y, radius: star.radius });
     });
 
-    projected.forEach((point, index) => {
-      const distances = projected
-        .map((other, otherIndex) => ({
-          other,
-          otherIndex,
-          distance: Math.hypot(point.px - other.px, point.py - other.py),
-        }))
-        .filter((entry) => entry.otherIndex !== index && entry.distance < 240)
-        .sort((a, b) => a.distance - b.distance)
-        .slice(0, 3);
+    for (let i = 0; i < starPositions.length; i += 1) {
+      const a = starPositions[i];
 
-      distances.forEach(({ other, distance, otherIndex }) => {
-        if (otherIndex < index) return;
-        const alpha = Math.max(0, 1 - (distance / 240)) * 0.12;
-        context.strokeStyle = `rgba(152, 221, 187, ${alpha})`;
-        context.lineWidth = 1;
-        context.beginPath();
-        context.moveTo(point.px, point.py);
-        context.lineTo(other.px, other.py);
-        context.stroke();
-      });
-    });
+      for (let j = i + 1; j < starPositions.length; j += 1) {
+        const b = starPositions[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const distance = Math.sqrt((dx * dx) + (dy * dy));
 
-    projected.forEach((point) => {
-      context.fillStyle = "rgba(160, 231, 198, 0.7)";
+        if (distance > 0 && distance < 170) {
+          const alpha = (1 - (distance / 170)) * 0.12;
+          context.strokeStyle = `rgba(181, 225, 205, ${alpha})`;
+          context.lineWidth = 0.7;
+          context.beginPath();
+          context.moveTo(a.x, a.y);
+          context.lineTo(b.x, b.y);
+          context.stroke();
+        }
+      }
+    }
+
+    starPositions.forEach((star) => {
+      context.fillStyle = "rgba(171, 224, 199, 0.72)";
       context.beginPath();
-      context.arc(point.px, point.py, point.size, 0, Math.PI * 2);
+      context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
       context.fill();
     });
 
@@ -180,7 +170,7 @@ if (canvas) {
   });
 
   window.addEventListener("mousemove", (event) => {
-    mouse = {
+    pointer = {
       x: event.clientX / window.innerWidth,
       y: event.clientY / window.innerHeight,
     };
