@@ -110,7 +110,7 @@ if (canvas) {
     context.clearRect(0, 0, width, height);
 
     ambientStars.forEach((star) => {
-      context.fillStyle = `rgba(171, 224, 199, ${star.alpha})`;
+      context.fillStyle = `rgba(173, 219, 255, ${star.alpha})`;
       context.beginPath();
       context.arc(star.x * width, star.y * height, star.radius, 0, Math.PI * 2);
       context.fill();
@@ -143,7 +143,7 @@ if (canvas) {
 
         if (distance > 0 && distance < 150) {
           const alpha = (1 - (distance / 150)) * 0.2;
-          context.strokeStyle = `rgba(181, 225, 205, ${alpha})`;
+          context.strokeStyle = `rgba(172, 214, 255, ${alpha})`;
           context.lineWidth = 0.8;
           context.beginPath();
           context.moveTo(a.x, a.y);
@@ -154,7 +154,7 @@ if (canvas) {
     }
 
     starPositions.forEach((star) => {
-      context.fillStyle = "rgba(171, 224, 199, 0.82)";
+      context.fillStyle = "rgba(179, 220, 255, 0.82)";
       context.beginPath();
       context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
       context.fill();
