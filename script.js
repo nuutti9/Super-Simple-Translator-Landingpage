@@ -81,9 +81,6 @@ if (canvas) {
   let width = 0;
   let height = 0;
   let rafId = 0;
-  let pointer = { x: 0.5, y: 0.28 };
-  let smoothPointer = { x: 0.5, y: 0.28 };
-
   const clusterNodes = Array.from({ length: 44 }, () => ({
     x: 0.22 + (Math.random() * 0.56),
     y: 0.04 + (Math.random() * 0.34),
@@ -112,9 +109,6 @@ if (canvas) {
   function drawConstellation() {
     context.clearRect(0, 0, width, height);
 
-    smoothPointer.x += (pointer.x - smoothPointer.x) * 0.06;
-    smoothPointer.y += (pointer.y - smoothPointer.y) * 0.06;
-
     ambientStars.forEach((star) => {
       context.fillStyle = `rgba(171, 224, 199, ${star.alpha})`;
       context.beginPath();
@@ -122,8 +116,6 @@ if (canvas) {
       context.fill();
     });
 
-    const mousePushX = (smoothPointer.x - 0.5) * 86;
-    const mousePushY = (smoothPointer.y - 0.3) * 54;
     const starPositions = [];
 
     clusterNodes.forEach((star) => {
@@ -135,8 +127,8 @@ if (canvas) {
         if (star.y <= 0.03 || star.y >= 0.42) star.vy *= -1;
       }
 
-      const x = (star.x * width) + mousePushX;
-      const y = (star.y * height) + mousePushY;
+      const x = star.x * width;
+      const y = star.y * height;
       starPositions.push({ x, y, radius: star.radius });
     });
 
@@ -182,16 +174,4 @@ if (canvas) {
       drawConstellation();
     }
   });
-
-  window.addEventListener("mousemove", (event) => {
-    pointer = {
-      x: event.clientX / window.innerWidth,
-      y: event.clientY / window.innerHeight,
-    };
-
-    if (prefersReducedMotion) {
-      window.cancelAnimationFrame(rafId);
-      rafId = window.requestAnimationFrame(drawConstellation);
-    }
-  }, { passive: true });
 }
