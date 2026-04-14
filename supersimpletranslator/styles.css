@@ -226,6 +226,25 @@ summary:focus-visible {
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
+.button-app-store {
+  gap: 10px;
+}
+
+.app-store-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.app-store-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .button:hover {
   transform: translateY(-2px);
 }

@@ -45,7 +45,14 @@
         </nav>
 
         <div class="nav-actions">
-          <a class="button button-small button-primary" href="#download" data-i18n="cta.appStore">App Store</a>
+          <a class="button button-small button-primary button-app-store" href="#download">
+            <span class="app-store-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8.2 18.4h7.6M10.1 14.8 6.8 9.1M13.9 14.8l3.3-5.7M9.6 6.2l4.8 8.2M8 11.2h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span data-i18n="cta.appStore">App Store</span>
+          </a>
         </div>
       </div>
     </header>
@@ -61,8 +68,13 @@
             </p>
 
             <div class="hero-actions" id="download">
-              <a class="button button-primary" href="https://www.apple.com/app-store/" target="_blank" rel="noreferrer" data-i18n="cta.download">
-                Download on the App Store
+              <a class="button button-primary button-app-store" href="https://www.apple.com/app-store/" target="_blank" rel="noreferrer">
+                <span class="app-store-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8.2 18.4h7.6M10.1 14.8 6.8 9.1M13.9 14.8l3.3-5.7M9.6 6.2l4.8 8.2M8 11.2h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span data-i18n="cta.download">Download on the App Store</span>
               </a>
               <a class="button button-secondary" href="#overview" data-i18n="cta.learnMore">Learn more</a>
             </div>
